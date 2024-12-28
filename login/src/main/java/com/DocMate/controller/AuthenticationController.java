@@ -49,7 +49,7 @@ public class AuthenticationController {
             	
             }
 
-            otpService.sendOtp(phoneNumber, 6);
+            otpService.sendOtp(phoneNumber, 4);
             return ResponseEntity.ok("OTP sent successfully.");
         } catch (Exception e) {
             logger.error("Error in sendOtp", e);
