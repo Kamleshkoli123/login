@@ -7,7 +7,7 @@ public class LoginValidationUtil {
 
     private static final Logger logger = LoggerFactory.getLogger(LoginValidationUtil.class);
 
-    // Static method to validate 6-digit OTP
+    // Static method to validate 4-digit OTP
     public static boolean isValidOTP(String otp) {
         logger.info("Validating OTP: {}", otp);
 
@@ -16,12 +16,12 @@ public class LoginValidationUtil {
             return false;
         }
 
-        if (otp.length() != 6) {
+        if (otp.length() != 4) {
             logger.error("OTP validation failed: Invalid length for OTP: {}", otp);
             return false;
         }
 
-        if (!otp.matches("\\d{6}")) {
+        if (!otp.matches("\\d{4}")) {
             logger.error("OTP validation failed: OTP contains invalid characters: {}", otp);
             return false;
         }
