@@ -9,6 +9,9 @@ import jakarta.servlet.http.HttpServletResponse;
 import com.DocMate.util.LoginValidationUtil;
 import com.DocMate.service.JwtService;
 import com.DocMate.dao.OtpDao;
+
+import java.util.HashMap;
+
 import org.bson.Document;
 
 import org.slf4j.Logger;
@@ -58,7 +61,7 @@ public class AuthenticationController {
     }
 
     @PostMapping("/verifyOtp")
-    public ResponseEntity<String> verifyOtp(@RequestParam("phoneNumber") String phoneNumber,
+    public ResponseEntity<?> verifyOtp(@RequestParam("phoneNumber") String phoneNumber,
                                             @RequestParam("otp") String inputOtp,
                                             HttpServletResponse response) {
         try {
@@ -79,13 +82,16 @@ public class AuthenticationController {
                 String jwtToken = jwtService.generateJwtToken(phoneNumber);
 
                 // Add JWT token as a cookie
-                // Cookie jwtCookie = new Cookie("jwtToken", jwtToken);
-                // jwtCookie.setHttpOnly(true);
-                // jwtCookie.setSecure(true); // Set true if using HTTPS
-                // jwtCookie.setPath("/");
-                // jwtCookie.setMaxAge(24 * 60 * 60); // Cookie valid for 1 day
-                // response.addCookie(jwtCookie);
+//                HashMap<String, String> tokenMap = new HashMap<>();
+//                Cookie jwtCookie = new Cookie("jwtToken", jwtToken);
+//                jwtCookie.setHttpOnly(true);
+//                jwtCookie.setSecure(true); // Set true if using HTTPS
+//                jwtCookie.setPath("/");
+//                jwtCookie.setMaxAge(24 * 60 * 60); // Cookie valid for 1 day
+//                response.addCookie(jwtCookie);
 
+//                tokenMap.put("token", jwtToken);
+                
                 logger.info("OTP verified for phone number: {}. JWT Token set as cookie.", phoneNumber);
                 return ResponseEntity.ok(jwtToken);
             } else {

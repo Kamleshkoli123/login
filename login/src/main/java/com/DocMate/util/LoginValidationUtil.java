@@ -7,7 +7,7 @@ public class LoginValidationUtil {
 
     private static final Logger logger = LoggerFactory.getLogger(LoginValidationUtil.class);
 
-    // Static method to validate 4-digit OTP
+    // Static method to validate 6-digit OTP
     public static boolean isValidOTP(String otp) {
         logger.info("Validating OTP: {}", otp);
 

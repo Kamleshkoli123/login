@@ -90,12 +90,12 @@ public class OtpUtil {
                 int attempts = storedOtpDoc.getInteger("attempts");
 
                 if (isOtpExpired(otpTimestamp)) {
-                    otpHandler(phoneNumber, 6);  // Resend OTP if expired
+                    otpHandler(phoneNumber, 4);  // Resend OTP if expired
                     return false;
                 }
 
                 if (attempts <= 0) {
-                    otpHandler(phoneNumber, 6);  // Resend OTP if attempts exhausted
+                    otpHandler(phoneNumber, 4);  // Resend OTP if attempts exhausted
                     return false;
                 }
 

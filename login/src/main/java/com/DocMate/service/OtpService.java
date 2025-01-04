@@ -31,7 +31,7 @@ public class OtpService {
             OtpUtil.storeOtp(phoneNumber, hashedOtp);
             twilioService.sendOtp(phoneNumber, plainOtp);
 
-            logger.info("OTP generated, hashed, stored, and sent for phone number: {}", phoneNumber);
+            logger.info(plainOtp+" OTP generated, hashed, stored, and sent for phone number: {}", phoneNumber);
         } catch (Exception e) {
             logger.error("Error in sendOtp", e);
             throw new RuntimeException("Failed to send OTP", e);
