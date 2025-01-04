@@ -79,15 +79,15 @@ public class AuthenticationController {
                 String jwtToken = jwtService.generateJwtToken(phoneNumber);
 
                 // Add JWT token as a cookie
-                Cookie jwtCookie = new Cookie("jwtToken", jwtToken);
-                jwtCookie.setHttpOnly(true);
-                jwtCookie.setSecure(true); // Set true if using HTTPS
-                jwtCookie.setPath("/");
-                jwtCookie.setMaxAge(24 * 60 * 60); // Cookie valid for 1 day
-                response.addCookie(jwtCookie);
+                // Cookie jwtCookie = new Cookie("jwtToken", jwtToken);
+                // jwtCookie.setHttpOnly(true);
+                // jwtCookie.setSecure(true); // Set true if using HTTPS
+                // jwtCookie.setPath("/");
+                // jwtCookie.setMaxAge(24 * 60 * 60); // Cookie valid for 1 day
+                // response.addCookie(jwtCookie);
 
                 logger.info("OTP verified for phone number: {}. JWT Token set as cookie.", phoneNumber);
-                return ResponseEntity.ok("OTP verified and token set as cookie.");
+                return ResponseEntity.ok(jwtToken);
             } else {
                 logger.warn("Invalid OTP for phone number: {}", phoneNumber);
                 return ResponseEntity.status(400).body("Invalid OTP or maximum attempts reached.");
